@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import OptionsPage from "./components/OptionsPage";
 
-ReactDOM.render(<OptionsPage />, document.getElementById("root"));
+createRoot(document.getElementById("root")).render(<OptionsPage />);

@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import PopupPage from "./components/PopupPage";
 
-ReactDOM.render(<PopupPage />, document.getElementById("root"));
+createRoot(document.getElementById("root")).render(<PopupPage />);

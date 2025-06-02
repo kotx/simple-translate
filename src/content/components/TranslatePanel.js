@@ -29,6 +29,10 @@ export default class TranslatePanel extends Component {
 
 		this.dragOffsets = { x: 0, y: 0 };
 		this.isDragging = false;
+		
+		this.panelRef = React.createRef();
+		this.wrapperRef = React.createRef();
+		this.moveRef = React.createRef();
 	}
 
 	componentDidMount = () => {
@@ -78,7 +82,7 @@ export default class TranslatePanel extends Component {
 	calcPosition = () => {
 		const maxWidth = Number.parseInt(getSettings("width"));
 		const maxHeight = Number.parseInt(getSettings("height"));
-		const wrapper = ReactDOM.findDOMNode(this.refs.wrapper);
+		const wrapper = this.wrapperRef.current;
 		const panelWidth = Math.min(wrapper.clientWidth, maxWidth);
 		const panelHeight = Math.min(wrapper.clientHeight, maxHeight);
 		const windowWidth = document.documentElement.clientWidth;
@@ -140,7 +144,7 @@ export default class TranslatePanel extends Component {
 
 	calcSize = () => {
 		const maxWidth = Number.parseInt(getSettings("width"));
-		const wrapper = ReactDOM.findDOMNode(this.refs.wrapper);
+		const wrapper = this.wrapperRef.current;
 		const wrapperWidth =
 			wrapper.clientWidth < maxWidth ? wrapper.clientWidth + 1 : maxWidth;
 		const wrapperHeight = wrapper.clientHeight;
@@ -211,15 +215,15 @@ export default class TranslatePanel extends Component {
 		return (
 			<div
 				className={`simple-translate-panel ${shouldShow ? "isShow" : ""}`}
-				ref="panel"
+				ref={this.panelRef}
 				style={panelStyles}
 			>
 				<div
 					className="simple-translate-result-wrapper"
-					ref="wrapper"
+					ref={this.wrapperRef}
 					style={wrapperStyles}
 				>
-					<div className="simple-translate-move" draggable="true" ref="move" />
+					<div className="simple-translate-move" draggable="true" ref={this.moveRef} />
 					<div className="simple-translate-result-contents">
 						<p
 							className="simple-translate-result"
