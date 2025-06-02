@@ -11,24 +11,24 @@ export const initSettings = async () => {
   let shouldSave = false;
 
   const pushSettings = element => {
-    if (element.id == undefined || element.default == undefined) return;
-    if (currentSettings[element.id] == undefined) {
+    if (element.id === undefined || element.default === undefined) return;
+    if (currentSettings[element.id] === undefined) {
       currentSettings[element.id] = element.default;
       shouldSave = true;
     }
   };
 
   const fetchDefaultSettings = () => {
-    defaultSettings.forEach(category => {
-      category.elements.forEach(optionElement => {
+    for (const category of defaultSettings) {
+      for (const optionElement of category.elements) {
         pushSettings(optionElement);
         if (optionElement.childElements) {
-          optionElement.childElements.forEach(childElement => {
+          for (const childElement of optionElement.childElements) {
             pushSettings(childElement);
-          });
+          }
         }
-      });
-    });
+      }
+    }
   };
 
   fetchDefaultSettings();
@@ -67,7 +67,7 @@ export const handleSettingsChange = (changes) => {
 export const exportSettings = async () => {
   const settingsIds = getSettingsIds();
 
-  let settingsObj = {};
+  const settingsObj = {};
   for (const id of settingsIds) {
     settingsObj[id] = getSettings(id);
   }
@@ -106,16 +106,16 @@ export const importSettings = async e => {
 };
 
 const getSettingsIds = () => {
-  let settingsIds = [];
-  defaultSettings.forEach(category => {
-    category.elements.forEach(optionElement => {
+  const settingsIds = [];
+  for (const category of defaultSettings) {
+    for (const optionElement of category.elements) {
       if (optionElement.id && optionElement.default !== undefined) settingsIds.push(optionElement.id);
       if (optionElement.childElements) {
-        optionElement.childElements.forEach(childElement => {
+        for (const childElement of optionElement.childElements) {
           if (childElement.id && childElement.default !== undefined) settingsIds.push(childElement.id);
-        });
+        }
       }
-    });
-  });
+    }
+  }
   return settingsIds;
 };

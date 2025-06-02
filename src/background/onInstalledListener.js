@@ -20,7 +20,7 @@ const openOptionsPage = active => {
 };
 
 export default async details => {
-  if (details.reason != "install" && details.reason != "update") return;
+  if (details.reason !== "install" && details.reason !== "update") return;
   log.info(logDir, "onInstalledListener()", details);
 
   await initSettings();
@@ -30,7 +30,7 @@ export default async details => {
   if (isShowOptionsPage) openOptionsPage(false);
 
   // Version 2.8.0以前からのアップデート
-  if (details.reason == "update" && details.previousVersion.replaceAll(".", "") < 280) {
+  if (details.reason === "update" && details.previousVersion.replaceAll(".", "") < 280) {
     //ユーザーが独自の色を設定していた場合、色の置き換えを有効にする
     const isSetUserColor =
       getSettings("resultFontColor") !== RESULT_FONT_COLOR_LIGHT && getSettings("resultFontColor") !== RESULT_FONT_COLOR_DARK ||

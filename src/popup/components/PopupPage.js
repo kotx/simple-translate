@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, StrictMode } from "react";
 import browser from "webextension-polyfill";
 import log from "loglevel";
 import { initSettings, getSettings, setSettings } from "src/settings/settings";
@@ -63,7 +63,7 @@ export default class PopupPage extends Component {
     overWriteLogLevel();
     updateLogLevel();
 
-    this.themeClass = getSettings("theme") + "-theme";
+    this.themeClass = `${getSettings("theme")}-theme`;
     document.body.classList.add(this.themeClass)
     const targetLang = getSettings("targetLang");
     let langHistory = getSettings("langHistory");
@@ -175,34 +175,36 @@ export default class PopupPage extends Component {
 
   render() {
     return (
-      <div className={rtlLanguageClassName}>
-        <Header
-          toggleEnabledOnPage={this.toggleEnabledOnPage}
-          isEnabledOnPage={this.state.isEnabledOnPage}
-          isConnected={this.state.isConnected}
-        />
-        <InputArea
-          inputText={this.state.inputText}
-          handleInputText={this.handleInputText}
-          sourceLang={this.state.sourceLang}
-        />
-        <hr />
-        <ResultArea
-          inputText={this.state.inputText}
-          targetLang={this.state.targetLang}
-          resultText={this.state.resultText}
-          candidateText={this.state.candidateText}
-          isError={this.state.isError}
-          errorMessage={this.state.errorMessage}
-        />
-        <Footer
-          tabUrl={this.state.tabUrl}
-          targetLang={this.state.targetLang}
-          langHistory={this.state.langHistory}
-          handleLangChange={this.handleLangChange}
-          langList={this.state.langList}
-        />
-      </div>
+      <StrictMode>
+        <div className={rtlLanguageClassName}>
+          <Header
+            toggleEnabledOnPage={this.toggleEnabledOnPage}
+            isEnabledOnPage={this.state.isEnabledOnPage}
+            isConnected={this.state.isConnected}
+          />
+          <InputArea
+            inputText={this.state.inputText}
+            handleInputText={this.handleInputText}
+            sourceLang={this.state.sourceLang}
+          />
+          <hr />
+          <ResultArea
+            inputText={this.state.inputText}
+            targetLang={this.state.targetLang}
+            resultText={this.state.resultText}
+            candidateText={this.state.candidateText}
+            isError={this.state.isError}
+            errorMessage={this.state.errorMessage}
+          />
+          <Footer
+            tabUrl={this.state.tabUrl}
+            targetLang={this.state.targetLang}
+            langHistory={this.state.langHistory}
+            handleLangChange={this.handleLangChange}
+            langList={this.state.langList}
+          />
+        </div>
+      </StrictMode>
     );
   }
 }

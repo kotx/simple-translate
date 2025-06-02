@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import browser from "webextension-polyfill";
 import browserInfo from "browser-info";
 import queryString from "query-string";
@@ -13,7 +14,8 @@ import {
 import manifest from "src/manifest-chrome.json";
 
 export default props => {
-  const query = queryString.parse(props.location.search);
+  const location = useLocation();
+  const query = queryString.parse(location.search);
   const extensionVersion = manifest.version;
 
   const [sponsorsHeihgt, setSponsorsHeight] = useState();
@@ -40,13 +42,13 @@ export default props => {
         updated={query.action === "updated"}
         extraCaption={
           <p className="caption">
-            <a href="https://github.com/sienori/simple-translate/releases" target="_blank">
+            <a href="https://github.com/sienori/simple-translate/releases" target="_blank" rel="noreferrer">
               Version {extensionVersion}
             </a>
             <span>　</span>
             <a
               href="https://github.com/sienori/simple-translate/blob/master/BACKERS.md"
-              target="_blank"
+              target="_blank" rel="noreferrer"
             >
               {browser.i18n.getMessage("backersLabel")}
             </a>
@@ -82,11 +84,11 @@ export default props => {
         type={"none"}
         extraCaption={
           <div>
-            <a href={patreonLink} target="_blank">
+            <a href={patreonLink} target="_blank" rel="noreferrer">
               <img src="/icons/patreonButton.png" alt="Patreon"
                 style={{ height: 44, marginInlineEnd: 20 }} />
             </a>
-            <a href={paypalLink} target="_blank">
+            <a href={paypalLink} target="_blank" rel="noreferrer">
               <img src="/icons/paypalButton.png" alt="Paypal" />
             </a>
           </div>
@@ -99,7 +101,7 @@ export default props => {
         extraCaption={
           <div>
             <p className="caption">
-              <a className="amazonUrl" href={browser.i18n.getMessage("amazonUrl")} target="_blank">
+              <a className="amazonUrl" href={browser.i18n.getMessage("amazonUrl")} target="_blank" rel="noreferrer">
                 {browser.i18n.getMessage("amazonTitleLabel")}
               </a>
             </p>
@@ -126,20 +128,20 @@ export default props => {
           <div>
             <p>
               {browserInfo().name === "Chrome" ? (
-                <a href={chromeExtensionUrl} target="_blank">
+                <a href={chromeExtensionUrl} target="_blank" rel="noreferrer">
                   {browser.i18n.getMessage("extensionPageLabel")}
                 </a>
               ) : (
-                  <a href={firefoxAddonUrl} target="_blank">
+                  <a href={firefoxAddonUrl} target="_blank" rel="noreferrer">
                     {browser.i18n.getMessage("addonPageLabel")}
                   </a>
                 )}
               <span>　</span>
-              <a href="https://github.com/sienori/simple-translate" target="_blank">
+              <a href="https://github.com/sienori/simple-translate" target="_blank" rel="noreferrer">
                 GitHub
               </a>
               <span>　</span>
-              <a href="https://simple-translate.sienori.com/privacy-policy" target="_blank">
+              <a href="https://simple-translate.sienori.com/privacy-policy" target="_blank" rel="noreferrer">
                 {browser.i18n.getMessage("privacyPolicyLabel")}
               </a>
             </p>

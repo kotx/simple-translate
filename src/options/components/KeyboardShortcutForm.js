@@ -21,14 +21,14 @@ const normalizeKey = (key, keyCode) => {
 
   const medias = /^(MediaPlayPause|MediaStop)$/;
   if (medias.test(key)) return key;
-  if (key == "MediaTrackNext") return "MediaNextTrack";
-  if (key == "MediaTrackPrevious") return "MediaPrevTrack";
+  if (key === "MediaTrackNext") return "MediaNextTrack";
+  if (key === "MediaTrackPrevious") return "MediaPrevTrack";
 
   const keyCode0 = 48;
   if (keyCode0 <= keyCode && keyCode <= keyCode0 + 9) return keyCode - keyCode0;
 
-  if (keyCode == 188) return "Comma";
-  if (keyCode == 190) return "Period";
+  if (keyCode === 188) return "Comma";
+  if (keyCode === 190) return "Period";
 
   return "";
 };
@@ -36,7 +36,7 @@ const normalizeKey = (key, keyCode) => {
 export default class KeyboardShortcutForm extends Component {
   constructor(props) {
     super(props);
-    this.isMac = browserInfo().os == "OS X";
+    this.isMac = browserInfo().os === "OS X";
     this.state = {
       shortcut: props.shortcut,
       value: props.shortcut,
@@ -62,7 +62,7 @@ export default class KeyboardShortcutForm extends Component {
 
   handleKeyDown(e) {
     if (e.repeat) return;
-    if (e.key == "Tab") {
+    if (e.key === "Tab") {
       window.document.activeElement.blur();
       return;
     }
@@ -79,19 +79,19 @@ export default class KeyboardShortcutForm extends Component {
       error = this.isMac
         ? browser.i18n.getMessage("includeMacModifierKeysMessage")
         : browser.i18n.getMessage("includeModifierKeysMessage");
-    else if (normalizedKey == "") error = browser.i18n.getMessage("invalidLetterMessage");
+    else if (normalizedKey === "") error = browser.i18n.getMessage("invalidLetterMessage");
 
     const value = `${e.ctrlKey ? (this.isMac ? "MacCtrl+" : "Ctrl+") : ""}${
       e.metaKey && this.isMac ? "Command+" : ""
     }${e.altKey ? "Alt+" : ""}${e.shiftKey ? "Shift+" : ""}${normalizedKey}`;
 
     this.setState({ error: error, value: value || "" });
-    const isValidShortcut = value != "" && error == "";
+    const isValidShortcut = value !== "" && error === "";
     if (isValidShortcut) this.updateShortcut(value);
   }
 
   handleKeyUp(e) {
-    if (this.state.error != "") {
+    if (this.state.error !== "") {
       this.setState({ value: "" });
     }
   }

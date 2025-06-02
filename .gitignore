@@ -2,3 +2,5 @@ node_modules/
 dist
 dev
 temp
+pnpm-lock.yaml
+.DS_Store

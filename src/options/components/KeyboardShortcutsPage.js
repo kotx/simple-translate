@@ -10,6 +10,9 @@ export default class KeyboardShortcutPage extends Component {
       commands: [],
       isInit: false
     };
+  }
+  
+  componentDidMount() {
     this.initCommands();
   }
 

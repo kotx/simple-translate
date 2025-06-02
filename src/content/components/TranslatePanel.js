@@ -68,17 +68,17 @@ export default class TranslatePanel extends Component {
   };
 
   calcPosition = () => {
-    const maxWidth = parseInt(getSettings("width"));
-    const maxHeight = parseInt(getSettings("height"));
+    const maxWidth = Number.parseInt(getSettings("width"));
+    const maxHeight = Number.parseInt(getSettings("height"));
     const wrapper = ReactDOM.findDOMNode(this.refs.wrapper);
     const panelWidth = Math.min(wrapper.clientWidth, maxWidth);
     const panelHeight = Math.min(wrapper.clientHeight, maxHeight);
     const windowWidth = document.documentElement.clientWidth;
     const windowHeight = document.documentElement.clientHeight;
     const referencePosition = this.props.position;
-    const offset = parseInt(getSettings("panelOffset"));
+    const offset = Number.parseInt(getSettings("panelOffset"));
 
-    let position = { x: 0, y: 0 };
+    const position = { x: 0, y: 0 };
     const panelDirection = getSettings("panelDirection");
     switch (panelDirection) {
       case "top":
@@ -131,7 +131,7 @@ export default class TranslatePanel extends Component {
   };
 
   calcSize = () => {
-    const maxWidth = parseInt(getSettings("width"));
+    const maxWidth = Number.parseInt(getSettings("width"));
     const wrapper = ReactDOM.findDOMNode(this.refs.wrapper);
     const wrapperWidth = wrapper.clientWidth < maxWidth ? wrapper.clientWidth + 1 : maxWidth;
     const wrapperHeight = wrapper.clientHeight;
@@ -151,7 +151,7 @@ export default class TranslatePanel extends Component {
     if (!this.state.shouldResize || !this.props.shouldShow) return;
     const panelPosition = this.calcPosition();
     const { panelWidth, panelHeight } = this.calcSize();
-    const isOverflow = panelHeight == parseInt(getSettings("height"));
+    const isOverflow = panelHeight === Number.parseInt(getSettings("height"));
 
     this.setState({
       shouldResize: false,
@@ -165,7 +165,7 @@ export default class TranslatePanel extends Component {
   render = () => {
     const { shouldShow, selectedText, currentLang, resultText, candidateText, isError, errorMessage } = this.props;
     const { width, height } = this.state.shouldResize
-      ? { width: parseInt(getSettings("width")), height: parseInt(getSettings("height")) }
+      ? { width: Number.parseInt(getSettings("width")), height: Number.parseInt(getSettings("height")) }
       : { width: this.state.panelWidth, height: this.state.panelHeight };
 
     const panelStyles = {
@@ -173,7 +173,7 @@ export default class TranslatePanel extends Component {
       height: height,
       top: this.state.panelPosition.y,
       left: this.state.panelPosition.x,
-      fontSize: parseInt(getSettings("fontSize")),
+      fontSize: Number.parseInt(getSettings("fontSize")),
     };
 
     const backgroundColor = getBackgroundColor()
@@ -194,7 +194,7 @@ export default class TranslatePanel extends Component {
         style={panelStyles}
       >
         <div className="simple-translate-result-wrapper" ref="wrapper" style={wrapperStyles}>
-          <div className="simple-translate-move" draggable="true" ref="move"></div>
+          <div className="simple-translate-move" draggable="true" ref="move" />
           <div className="simple-translate-result-contents">
             <p className="simple-translate-result" style={getResultFontColor()} dir="auto">
               {splitLine(resultText)}
@@ -210,7 +210,7 @@ export default class TranslatePanel extends Component {
                   `https://translate.google.com/?sl=auto&tl=${currentLang}&text=${encodeURIComponent(selectedText)}` :
                   `https://www.deepl.com/translator#auto/${currentLang}/${encodeURIComponent(selectedText)}`
                 }
-                  target="_blank">
+                  target="_blank" rel="noreferrer">
                   {translationApi === "google" ?
                     browser.i18n.getMessage("openInGoogleLabel") :
                     browser.i18n.getMessage("openInDeeplLabel")}

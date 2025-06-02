@@ -5,9 +5,6 @@ import "../styles/Footer.scss";
 import { getSettings } from "../../settings/settings";
 
 export default class Footer extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleLinkClick = async () => {
     const { tabUrl, targetLang } = this.props;

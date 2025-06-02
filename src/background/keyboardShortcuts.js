@@ -10,11 +10,11 @@ import { initSettings } from "../settings/settings";
 const logDir = "background/keyboardShortcuts";
 
 export const initShortcuts = async () => {
-  const isValidShortcuts = browserInfo().name == "Firefox" && browserInfo().version >= 60;
+  const isValidShortcuts = browserInfo().name === "Firefox" && browserInfo().version >= 60;
   if (!isValidShortcuts) return;
   log.info(logDir, "initShortcuts()");
 
-  let initedShortcuts = getSettings("initedShortcuts") || [];
+  const initedShortcuts = getSettings("initedShortcuts") || [];
 
   const commands = manifest.commands;
   for (const commandId of Object.keys(commands)) {

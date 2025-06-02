@@ -4,8 +4,8 @@ import { getSettings } from "src/settings/settings";
 import "../styles/TranslateButton.scss";
 
 const calcPosition = () => {
-  const buttonSize = parseInt(getSettings("buttonSize"));
-  const offset = parseInt(getSettings("buttonOffset"));
+  const buttonSize = Number.parseInt(getSettings("buttonSize"));
+  const offset = Number.parseInt(getSettings("buttonOffset"));
   switch (getSettings("buttonDirection")) {
     case "top":
       return { top: -buttonSize - offset, left: -buttonSize / 2 };
@@ -21,7 +21,6 @@ const calcPosition = () => {
       return { top: -buttonSize - offset, left: -buttonSize - offset };
     case "bottomLeft":
       return { top: offset, left: -buttonSize - offset };
-    case "bottomRight":
     default:
       return { top: offset, left: offset };
   }
@@ -29,7 +28,7 @@ const calcPosition = () => {
 
 export default props => {
   const { position, shouldShow } = props;
-  const buttonSize = parseInt(getSettings("buttonSize"));
+  const buttonSize = Number.parseInt(getSettings("buttonSize"));
   const { top, left } = calcPosition();
   const iconUrl = browser.runtime.getURL("icons/512.png");
   const buttonStyle = {

@@ -47,7 +47,7 @@ const sendRequestToGoogle = async (word, sourceLang, targetLang) => {
   resultData.resultText = result.sentences.map(sentence => sentence.trans).join("");
   if (result.dict) {
     resultData.candidateText = result.dict
-      .map(dict => `${dict.pos}${dict.pos != "" ? ": " : ""}${dict.terms !== undefined?dict.terms.join(", "):""}\n`)
+      .map(dict => `${dict.pos}${dict.pos !== "" ? ": " : ""}${dict.terms !== undefined?dict.terms.join(", "):""}\n`)
       .join("");
   }
 
@@ -56,7 +56,7 @@ const sendRequestToGoogle = async (word, sourceLang, targetLang) => {
 };
 
 const sendRequestToDeepL = async (word, sourceLang, targetLang) => {
-  let params = new URLSearchParams();
+  const params = new URLSearchParams();
   const authKey = getSettings("deeplAuthKey");
   params.append("auth_key", authKey);
   params.append("text", word);
@@ -101,7 +101,7 @@ const sendRequestToDeepL = async (word, sourceLang, targetLang) => {
 };
 
 
-export default async (sourceWord, sourceLang = "auto", targetLang) => {
+export default async (sourceWord, sourceLang, targetLang) => {
   log.log(logDir, "tranlate()", sourceWord, targetLang);
   sourceWord = sourceWord.trim();
   if (sourceWord === "")

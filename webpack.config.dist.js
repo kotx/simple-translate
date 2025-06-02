@@ -13,9 +13,9 @@ const {
   getMiniCssExtractPlugin,
   getEntry
 } = require("./webpack.utils");
-const path = require("path");
+const path = require("node:path");
 const config = require("./config.json");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const extVersion = require("./src/manifest-chrome.json").version;
@@ -71,7 +71,7 @@ module.exports = [
       minimize: true
     },
     plugins: [
-      new CleanWebpackPlugin(["dist", "temp"]),
+      new CleanWebpackPlugin(),
       ...getMiniCssExtractPlugin(),
       ...getHTMLPlugins("chrome", config.tempDirectory, config.chromePath),
       ...getCopyPlugins("chrome", config.tempDirectory, config.chromePath),
@@ -86,7 +86,7 @@ module.exports = [
       minimize: true
     },
     plugins: [
-      new CleanWebpackPlugin(["dist", "temp"]),
+      new CleanWebpackPlugin(),
       ...getMiniCssExtractPlugin(),
       ...getHTMLPlugins("firefox", config.tempDirectory, config.firefoxPath),
       ...getFirefoxCopyPlugins("firefox", config.tempDirectory, config.firefoxPath),
@@ -100,13 +100,13 @@ module.exports = [
         src: path.resolve(__dirname, "src/")
       }
     },
-    entry: { other: path.resolve(__dirname, `src/background/background.js`) },
+    entry: { other: path.resolve(__dirname, "src/background/background.js") },
     output: getOutput("copiedSource", config.tempDirectory),
     plugins: [
       new CopyWebpackPlugin({
         patterns: [
           {
-            from: `src`,
+            from: "src",
             to: path.resolve(__dirname, `${config.tempDirectory}/copiedSource/src/`),
             info: { minimized: true }
           },

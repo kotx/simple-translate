@@ -36,7 +36,6 @@ export default class InputArea extends Component {
           ref="textarea"
           placeholder={browser.i18n.getMessage("initialTextArea")}
           onChange={this.handleInputText}
-          autoFocus
           spellCheck={false}
           dir="auto"
         />

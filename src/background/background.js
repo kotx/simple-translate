@@ -18,7 +18,7 @@ browser.storage.local.onChanged.addListener((changes) => {
   showMenus();
 });
 
-if (!!browser.contextMenus?.onShown) browser.contextMenus.onShown.addListener(onMenusShownListener);
+if (browser.contextMenus?.onShown) browser.contextMenus.onShown.addListener(onMenusShownListener);
 browser.contextMenus.onClicked.addListener(onMenusClickedListener);
 
 const init = async () => {

@@ -11,7 +11,7 @@ const {
   getEntry,
   getMiniCssExtractPlugin
 } = require("./webpack.utils");
-const path = require("path");
+const path = require("node:path");
 const config = require("./config.json");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 

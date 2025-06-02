@@ -15,7 +15,7 @@ const getDefaultLangs = () => {
   const uiLang = browser.i18n.getUILanguage();
   const langOptions = generateLangOptions("google");
 
-  const shouldUseUiLang = langOptions.some(lang => lang.value == uiLang);
+  const shouldUseUiLang = langOptions.some(lang => lang.value === uiLang);
   const targetLang = shouldUseUiLang ? uiLang : "en";
   const secondTargetLang = targetLang === "en" ? "ja" : "en";
 

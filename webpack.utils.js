@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ZipPlugin = require("zip-webpack-plugin");
-const path = require("path");
+const path = require("node:path");
 
 const getHTMLPlugins = (browserDir, outputDir = "dev", sourceDir = "src") => [
   new HtmlWebpackPlugin({

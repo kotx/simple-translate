@@ -12,6 +12,9 @@ export default class SettingsPage extends Component {
       isInit: false,
       currentValues: {}
     };
+  }
+  
+  componentDidMount() {
     this.init();
   }
 

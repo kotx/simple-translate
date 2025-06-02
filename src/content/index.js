@@ -32,8 +32,7 @@ const handleMouseUp = async e => {
   if (inCodeElement && getSettings("isDisabledInCodeElement")) return;
 
   const isInThisElement =
-    document.querySelector("#simple-translate") &&
-    document.querySelector("#simple-translate").contains(e.target);
+    document.querySelector("#simple-translate")?.contains(e.target);
   if (isInThisElement) return;
 
   removeTranslatecontainer();
@@ -109,7 +108,7 @@ const getSelectedPosition = () => {
         y: selectedRect.top
       };
       break;
-    case "bottomSelectedText":
+    // case "bottomSelectedText":
     default:
       selectedPosition = {
         x: selectedRect.left + selectedRect.width / 2,
@@ -152,12 +151,12 @@ const handleMessage = async request => {
   switch (request.message) {
     case "getTabUrl":
       if (!isEnabled) return empty;
-      if (window == window.parent) return location.href;
-      else return empty;
+      if (window === window.parent) return location.href;
+      return empty;
     case "getSelectedText":
       if (!isEnabled) return empty;
       if (prevSelectedText.length === 0) return empty;
-      else return prevSelectedText;
+      return prevSelectedText;
     case "translateSelectedText": {
       if (!isEnabled) return empty;
       const selectedText = getSelectedText();
@@ -193,9 +192,9 @@ const disableExtensionByUrlList = () => {
   const matchesPageUrl = urlPattern => {
     const pattern = urlPattern
       .trim()
-      .replace(/[-[\]{}()*+?.,\\^$|#\s]/g, match => (match === "*" ? ".*" : "\\" + match));
+      .replace(/[-[\]{}()*+?.,\\^$|#\s]/g, match => (match === "*" ? ".*" : `\\${match}`));
     if (pattern === "") return false;
-    return RegExp("^" + pattern + "$").test(pageUrl);
+    return RegExp(`^${pattern}$`).test(pageUrl);
   };
 
   const isMatched = disableUrls.some(matchesPageUrl);
@@ -220,7 +219,7 @@ const showTranslateContainer = (
   if (element) return;
   if (!isEnabled) return;
 
-  const themeClass = "simple-translate-" + getSettings("theme") + "-theme";
+  const themeClass = `simple-translate-${getSettings("theme")}-theme`;
 
   document.body.insertAdjacentHTML("beforeend", `<div id="simple-translate" class="${themeClass}"></div>`);
   ReactDOM.render(

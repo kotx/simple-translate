@@ -10,11 +10,11 @@ export default props => {
   const handleValueChange = e => {
     let value = e.target.value;
 
-    if (type == "number") {
+    if (type === "number") {
       const validity = e.target.validity;
       if (validity.rangeOverflow) value = props.max;
       else if (validity.rangeUnderflow) value = props.min;
-      else if (validity.badInput || value == "" || !validity.valid) value = props.default;
+      else if (validity.badInput || value === "" || !validity.valid) value = props.default;
     }
 
     setSettings(id, value);
@@ -158,14 +158,14 @@ export default props => {
       break;
   }
 
-  const shouldShow = props.shouldShow == undefined
+  const shouldShow = props.shouldShow === undefined
     || (typeof props.shouldShow === 'function' ? props.shouldShow() : props.shouldShow);
 
   return (
     shouldShow && (
       <li className={`optionContainer ${props.updated ? "updated" : ""} ${props.new ? "new" : ""}`}>
         {props.hr && <hr />}
-        <div className={`optionElement ${type == "textarea" ? "showColumn" : ""}`}>
+        <div className={`optionElement ${type === "textarea" ? "showColumn" : ""}`}>
           <div className="optionText">
             <label className="noHover" htmlFor={formId ? formId : null}>
               <p>{title ? (props.useRawTitle ? title : browser.i18n.getMessage(title)) : ""}</p>
