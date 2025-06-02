@@ -8,36 +8,36 @@ import ScrollToTop from "./ScrollToTop";
 import "../styles/OptionsPage.scss";
 
 const setupTheme = async () => {
-  await initSettings();
-  document.body.classList.add(`${getSettings("theme")}-theme`);
+	await initSettings();
+	document.body.classList.add(`${getSettings("theme")}-theme`);
 
-  browser.storage.local.onChanged.addListener((changes) => {
-    if (changes.Settings.newValue.theme === changes.Settings.oldValue.theme)
-      return;
+	browser.storage.local.onChanged.addListener((changes) => {
+		if (changes.Settings.newValue.theme === changes.Settings.oldValue.theme)
+			return;
 
-    document.body.classList.replace(
-      `${changes.Settings.oldValue.theme}-theme`,
-      `${changes.Settings.newValue.theme}-theme`
-    );
-  });
+		document.body.classList.replace(
+			`${changes.Settings.oldValue.theme}-theme`,
+			`${changes.Settings.newValue.theme}-theme`,
+		);
+	});
 };
 
-const UILanguage =  browser.i18n.getUILanguage()
-const rtlLanguage = ['he', 'ar'].includes(UILanguage)
-const optionsPageClassName = `optionsPage${rtlLanguage ? ' rtl-language' : ''}`
+const UILanguage = browser.i18n.getUILanguage();
+const rtlLanguage = ["he", "ar"].includes(UILanguage);
+const optionsPageClassName = `optionsPage${rtlLanguage ? " rtl-language" : ""}`;
 
 export default () => {
-  setupTheme();
-  return (
-    <StrictMode>
-      <HashRouter hashType="noslash">
-        <ScrollToTop>
-          <div className={optionsPageClassName}>
-            <SideBar />
-            <ContentsArea />
-          </div>
-        </ScrollToTop>
-      </HashRouter>
-    </StrictMode>
-  );
+	setupTheme();
+	return (
+		<StrictMode>
+			<HashRouter hashType="noslash">
+				<ScrollToTop>
+					<div className={optionsPageClassName}>
+						<SideBar />
+						<ContentsArea />
+					</div>
+				</ScrollToTop>
+			</HashRouter>
+		</StrictMode>
+	);
 };
