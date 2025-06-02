@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import browser from "webextension-polyfill";
 import browserInfo from "browser-info";
 import queryString from "query-string";

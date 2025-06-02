@@ -1,6 +1,6 @@
 import React from "react";
 import browser from "webextension-polyfill";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router";
 import browserInfo from "browser-info";
 import "../styles/SideBar.scss";
 

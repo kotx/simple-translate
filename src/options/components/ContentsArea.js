@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router";
 import browserInfo from "browser-info";
 import SettingsPage from "./SettingsPage";
 import KeyboardShortcutsPage from "./KeyboardShortcutsPage";
