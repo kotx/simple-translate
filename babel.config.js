@@ -4,17 +4,17 @@ module.exports = {
 			"@babel/preset-env",
 			{
 				targets: {
-					firefox: 63,
+					firefox: 57,
 				},
 			},
 		],
 		"@babel/preset-react",
 	],
 	plugins: [
-		"@babel/plugin-proposal-nullish-coalescing-operator",
-		"@babel/plugin-proposal-optional-chaining",
+		"@babel/plugin-transform-nullish-coalescing-operator",
+		"@babel/plugin-transform-optional-chaining",
 		"@babel/plugin-syntax-optional-chaining",
-		"@babel/plugin-proposal-object-rest-spread",
+		"@babel/plugin-transform-object-rest-spread",
 		"transform-class-properties",
 	],
 };
