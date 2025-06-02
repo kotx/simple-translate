@@ -1,7 +1,7 @@
-import browser from "webextension-polyfill";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import { getSettings } from "src/settings/settings";
+import browser from "webextension-polyfill";
 import "../styles/TranslatePanel.scss";
 import {
 	getBackgroundColor,
@@ -13,6 +13,7 @@ const splitLine = (text) => {
 	const regex = /(\n)/g;
 	return text
 		.split(regex)
+		// biome-ignore lint/suspicious/noArrayIndexKey: No ordering required
 		.map((line, i) => (line.match(regex) ? <br key={i} /> : line));
 };
 
@@ -151,17 +152,17 @@ export default class TranslatePanel extends Component {
 		return { panelWidth: wrapperWidth, panelHeight: wrapperHeight };
 	};
 
-	componentWillReceiveProps = (nextProps) => {
+	componentDidUpdate = (prevProps) => {
 		const isChangedContents =
-			this.props.resultText !== nextProps.resultText ||
-			this.props.candidateText !== nextProps.candidateText ||
-			this.props.position !== nextProps.position;
+			prevProps.resultText !== this.props.resultText ||
+			prevProps.candidateText !== this.props.candidateText ||
+			prevProps.position !== this.props.position;
 
-		if (isChangedContents && nextProps.shouldShow)
+		if (isChangedContents && this.props.shouldShow) {
 			this.setState({ shouldResize: true });
-	};
+			return;
+		}
 
-	componentDidUpdate = () => {
 		if (!this.state.shouldResize || !this.props.shouldShow) return;
 		const panelPosition = this.calcPosition();
 		const { panelWidth, panelHeight } = this.calcSize();
