@@ -142,6 +142,7 @@ export default class KeyboardShortcutForm extends Component {
 						style={{ imeMode: "disabled" }}
 					/>
 					<button
+						type="button"
 						className="clearButton"
 						title={browser.i18n.getMessage("clear")}
 						onClick={(e) => this.clearShortcut(e)}
@@ -149,6 +150,7 @@ export default class KeyboardShortcutForm extends Component {
 						<ClearIcon />
 					</button>
 					<button
+						type="button"
 						className="resetButton"
 						title={browser.i18n.getMessage("reset")}
 						onClick={(e) => this.resetShortcut(e)}

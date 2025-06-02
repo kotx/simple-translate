@@ -15,18 +15,18 @@ export default (props) => {
 				</legend>
 				<ul className="categoryElements">
 					{elements.map((option, index) => (
-						<div key={index}>
+						<div key={option.id}>
 							<OptionContainer
 								{...option}
 								currentValue={currentValues[option.id]}
 							>
-								{option.hasOwnProperty("childElements") && (
+								{Object.hasOwn(option, "childElements") && (
 									<ul className="childElements">
-										{option.childElements.map((option, index) => (
+										{option.childElements.map((option) => (
 											<OptionContainer
 												{...option}
 												currentValue={currentValues[option.id]}
-												key={index}
+												key={`${option.id}-${option.title}`}
 											/>
 										))}
 									</ul>

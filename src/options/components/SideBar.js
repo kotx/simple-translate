@@ -12,7 +12,7 @@ const SideBar = (props) => {
 	return (
 		<div className="sideBar">
 			<div className="titleContainer">
-				<img src="/icons/64.png" className="logo" />
+				<img src="/icons/64.png" className="logo" alt="Simple Translate logo" />
 				<span className="logoTitle">Simple Translate</span>
 			</div>
 			<ul>

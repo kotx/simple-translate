@@ -31,6 +31,7 @@ export default class CopyButton extends Component {
 					</span>
 				)}
 				<button
+					type="button"
 					className="copyButton"
 					title={browser.i18n.getMessage("copyLabel")}
 					onClick={() => this.handleCopy(text)}

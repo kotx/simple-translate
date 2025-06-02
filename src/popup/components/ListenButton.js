@@ -28,6 +28,7 @@ export default (props) => {
 
 	return (
 		<button
+			type="button"
 			className="listenButton"
 			onClick={() => playAudio(text, lang)}
 			title={browser.i18n.getMessage("listenLabel")}

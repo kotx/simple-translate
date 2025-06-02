@@ -3,21 +3,12 @@ import ReactDOM from "react-dom";
 import { getSettings } from "src/settings/settings";
 import browser from "webextension-polyfill";
 import "../styles/TranslatePanel.scss";
+import { splitLine } from "../../common/splitLine";
 import {
 	getBackgroundColor,
 	getCandidateFontColor,
 	getResultFontColor,
 } from "../../settings/defaultColors";
-
-const splitLine = (text) => {
-	const regex = /(\n)/g;
-	return (
-		text
-			.split(regex)
-			// biome-ignore lint/suspicious/noArrayIndexKey: No ordering required
-			.map((line, i) => (line.match(regex) ? <br key={i} /> : line))
-	);
-};
 
 export default class TranslatePanel extends Component {
 	constructor(props) {

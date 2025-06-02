@@ -39,6 +39,7 @@ export default (props) => {
 		left: left + position.x,
 	};
 	return (
+		// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
 		<div
 			style={buttonStyle}
 			className={`simple-translate-button ${shouldShow ? "isShow" : ""}`}

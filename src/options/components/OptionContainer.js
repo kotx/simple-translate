@@ -121,7 +121,7 @@ export default (props) => {
 							? props.options()
 							: props.options
 						).map((option, index) => (
-							<option value={option.value} key={index}>
+							<option value={option.value} key={option.name}>
 								{props.useRawOptionName
 									? option.name
 									: browser.i18n.getMessage(option.name)}
@@ -197,8 +197,8 @@ export default (props) => {
 									: ""}
 							</p>
 						</label>
-						{captions.map((caption, index) => (
-							<p className="caption" key={index}>
+						{captions.map((caption) => (
+							<p className="caption" key={caption}>
 								{caption
 									? props.useRawCaptions
 										? caption

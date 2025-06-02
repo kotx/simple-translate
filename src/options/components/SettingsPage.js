@@ -40,10 +40,10 @@ export default class SettingsPage extends Component {
 		const { isInit, currentValues } = this.state;
 		const settingsContent = (
 			<ul>
-				{defaultSettings.map((category, index) => (
+				{defaultSettings.map((category) => (
 					<CategoryContainer
 						{...category}
-						key={index}
+						key={category.category}
 						currentValues={currentValues}
 					/>
 				))}

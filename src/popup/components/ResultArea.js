@@ -5,13 +5,7 @@ import browser from "webextension-polyfill";
 import CopyButton from "./CopyButton";
 import ListenButton from "./ListenButton";
 import "../styles/ResultArea.scss";
-
-const splitLine = (text) => {
-	const regex = /(\n)/g;
-	return text
-		.split(regex)
-		.map((line, i) => (line.match(regex) ? <br key={i} /> : line));
-};
+import { splitLine } from "../../common/splitLine";
 
 export default (props) => {
 	const { resultText, candidateText, isError, errorMessage, targetLang } =

@@ -242,6 +242,7 @@ export default [
 				default: false,
 			},
 			{
+				id: "disableTranslation",
 				title: "disableTranslationLabel",
 				captions: [],
 				type: "none",
@@ -360,6 +361,7 @@ export default [
 				],
 			},
 			{
+				id: "buttonStyle",
 				title: "buttonStyleLabel",
 				captions: ["buttonStyleCaptionLabel"],
 				type: "none",
@@ -425,6 +427,7 @@ export default [
 				],
 			},
 			{
+				id: "panelStyle",
 				title: "panelStyleLabel",
 				captions: ["panelStyleCaptionLabel"],
 				type: "none",

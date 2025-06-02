@@ -18,7 +18,7 @@ export default (props) => {
 	const query = queryString.parse(location.search);
 	const extensionVersion = manifest.version;
 
-	const [sponsorsHeihgt, setSponsorsHeight] = useState();
+	const [sponsorsHeight, setSponsorsHeight] = useState();
 
 	useEffect(() => {
 		const setHeight = (e) => {
@@ -135,8 +135,9 @@ export default (props) => {
 				type={"none"}
 				extraCaption={
 					<iframe
+						title="Sponsors"
 						src="https://simple-translate.sienori.com/sponsors.html"
-						style={{ height: sponsorsHeihgt, marginTop: 10 }}
+						style={{ height: sponsorsHeight, marginTop: 10 }}
 					/>
 				}
 			/>
@@ -181,12 +182,12 @@ export default (props) => {
 	);
 };
 
+const permissions = {
+	origins: ["http://*/*", "https://*/*", "<all_urls>"],
+};
+
 const useAdditionalPermission = () => {
 	const [hasPermission, setHasPermission] = useState(true);
-
-	const permissions = {
-		origins: ["http://*/*", "https://*/*", "<all_urls>"],
-	};
 
 	const checkPermission = async () => {
 		const hasPermission = await browser.permissions.contains(permissions);
@@ -198,6 +199,7 @@ const useAdditionalPermission = () => {
 		checkPermission();
 	};
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: checkPermission is stable
 	useEffect(() => {
 		checkPermission();
 	}, []);

@@ -134,9 +134,9 @@ const sendRequestToDeepL = async (word, sourceLang, targetLang) => {
 	return resultData;
 };
 
-export default async (sourceWord, sourceLang, targetLang) => {
-	log.log(logDir, "tranlate()", sourceWord, targetLang);
-	sourceWord = sourceWord.trim();
+export default async (sourceWordText, sourceLang, targetLang) => {
+	log.log(logDir, "translate()", sourceWordText, targetLang);
+	const sourceWord = sourceWordText.trim();
 	if (sourceWord === "")
 		return {
 			resultText: "",

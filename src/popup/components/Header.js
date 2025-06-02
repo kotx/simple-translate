@@ -38,6 +38,7 @@ export default (props) => (
 				/>
 			</div>
 			<button
+				type="button"
 				className="heartButton"
 				onClick={openPatreon}
 				title={browser.i18n.getMessage("donateLabel")}
@@ -45,6 +46,7 @@ export default (props) => (
 				<HeartIcon />
 			</button>
 			<button
+				type="button"
 				className={"settingsButton"}
 				onClick={openSettings}
 				title={browser.i18n.getMessage("settingsLabel")}
