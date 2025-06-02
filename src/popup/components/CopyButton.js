@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import browser from "webextension-polyfill";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import CopyIcon from "../icons/copy.svg";
 import "../styles/CopyButton.scss";
 
@@ -11,8 +10,9 @@ export default class CopyButton extends Component {
 	}
 
 	handleCopy = (copiedText) => {
-		navigator.clipboard.writeText(copiedText);
-		this.setState({ isCopied: true });
+		navigator.clipboard.writeText(copiedText).then(() => {
+			this.setState({ isCopied: true });
+		});
 	};
 
 	componentWillReceiveProps(nextProps) {
@@ -30,14 +30,13 @@ export default class CopyButton extends Component {
 						{browser.i18n.getMessage("copiedLabel")}
 					</span>
 				)}
-				<CopyToClipboard text={text} onCopy={this.handleCopy}>
-					<button
-						className="copyButton"
-						title={browser.i18n.getMessage("copyLabel")}
-					>
-						<CopyIcon />
-					</button>
-				</CopyToClipboard>
+				<button
+					className="copyButton"
+					title={browser.i18n.getMessage("copyLabel")}
+					onClick={() => this.handleCopy(text)}
+				>
+					<CopyIcon />
+				</button>
 			</div>
 		);
 	}

@@ -29,7 +29,7 @@ export default class TranslatePanel extends Component {
 
 		this.dragOffsets = { x: 0, y: 0 };
 		this.isDragging = false;
-		
+
 		this.panelRef = React.createRef();
 		this.wrapperRef = React.createRef();
 		this.moveRef = React.createRef();
@@ -223,7 +223,11 @@ export default class TranslatePanel extends Component {
 					ref={this.wrapperRef}
 					style={wrapperStyles}
 				>
-					<div className="simple-translate-move" draggable="true" ref={this.moveRef} />
+					<div
+						className="simple-translate-move"
+						draggable="true"
+						ref={this.moveRef}
+					/>
 					<div className="simple-translate-result-contents">
 						<p
 							className="simple-translate-result"

@@ -4,7 +4,7 @@ module.exports = {
 			"@babel/preset-env",
 			{
 				targets: {
-					firefox: 57,
+					firefox: 63,
 				},
 			},
 		],
