@@ -1,9 +1,9 @@
-import browser from "webextension-polyfill";
 import browserInfo from "browser-info";
 import log from "loglevel";
-import { getSettings, setSettings } from "src/settings/settings";
 import getShortcut from "src/common/getShortcut";
 import manifest from "src/manifest-chrome.json";
+import { getSettings, setSettings } from "src/settings/settings";
+import browser from "webextension-polyfill";
 import openUrl from "../common/openUrl";
 import { initSettings } from "../settings/settings";
 

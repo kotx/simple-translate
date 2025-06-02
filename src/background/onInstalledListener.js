@@ -1,15 +1,15 @@
-import browser from "webextension-polyfill";
 import log from "loglevel";
-import { initSettings, getSettings, setSettings } from "src/settings/settings";
-import { initShortcuts } from "./keyboardShortcuts";
 import {
-	RESULT_FONT_COLOR_LIGHT,
-	RESULT_FONT_COLOR_DARK,
-	CANDIDATE_FONT_COLOR_LIGHT,
-	CANDIDATE_FONT_COLOR_DARK,
-	BG_COLOR_LIGHT,
 	BG_COLOR_DARK,
+	BG_COLOR_LIGHT,
+	CANDIDATE_FONT_COLOR_DARK,
+	CANDIDATE_FONT_COLOR_LIGHT,
+	RESULT_FONT_COLOR_DARK,
+	RESULT_FONT_COLOR_LIGHT,
 } from "src/settings/defaultColors";
+import { getSettings, initSettings, setSettings } from "src/settings/settings";
+import browser from "webextension-polyfill";
+import { initShortcuts } from "./keyboardShortcuts";
 const logDir = "background/onInstalledListener";
 
 const openOptionsPage = (active) => {

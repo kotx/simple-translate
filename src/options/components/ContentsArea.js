@@ -1,9 +1,9 @@
+import browserInfo from "browser-info";
 import React from "react";
 import { Route, Routes } from "react-router";
-import browserInfo from "browser-info";
-import SettingsPage from "./SettingsPage";
-import KeyboardShortcutsPage from "./KeyboardShortcutsPage";
 import InformationPage from "./InformationPage";
+import KeyboardShortcutsPage from "./KeyboardShortcutsPage";
+import SettingsPage from "./SettingsPage";
 import "../styles/ContentsArea.scss";
 
 const isValidShortcuts =

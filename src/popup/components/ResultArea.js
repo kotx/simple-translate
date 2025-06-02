@@ -1,7 +1,7 @@
 import React from "react";
-import browser from "webextension-polyfill";
-import { getSettings } from "src/settings/settings";
 import openUrl from "src/common/openUrl";
+import { getSettings } from "src/settings/settings";
+import browser from "webextension-polyfill";
 import CopyButton from "./CopyButton";
 import ListenButton from "./ListenButton";
 import "../styles/ResultArea.scss";

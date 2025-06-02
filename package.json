@@ -54,11 +54,7 @@
 	},
 	"homepage": "https://github.com/sienori/simple-translate#readme",
 	"main": ".src/manifest.json",
-	"keywords": [
-		"webextensions",
-		"firefox",
-		"chrome"
-	],
+	"keywords": ["webextensions", "firefox", "chrome"],
 	"engines": {
 		"node": ">=20.11"
 	},

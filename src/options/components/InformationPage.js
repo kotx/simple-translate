@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router";
-import browser from "webextension-polyfill";
 import browserInfo from "browser-info";
 import queryString from "query-string";
-import OptionsContainer from "./OptionContainer";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router";
 import {
-	paypalLink,
-	patreonLink,
-	email,
 	chromeExtensionUrl,
+	email,
 	firefoxAddonUrl,
+	patreonLink,
+	paypalLink,
 } from "src/common/personalUrls";
 import manifest from "src/manifest-chrome.json";
+import browser from "webextension-polyfill";
+import OptionsContainer from "./OptionContainer";
 
 export default (props) => {
 	const location = useLocation();

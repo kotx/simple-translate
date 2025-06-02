@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import browser from "webextension-polyfill";
 import getShortcut from "src/common/getShortcut";
+import browser from "webextension-polyfill";
 import CategoryContainer from "./CategoryContainer";
 
 export default class KeyboardShortcutPage extends Component {

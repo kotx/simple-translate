@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import browser from "webextension-polyfill";
-import { updateLogLevel, overWriteLogLevel } from "src/common/log";
-import {
-	initSettings,
-	getAllSettings,
-	resetAllSettings,
-	exportSettings,
-	importSettings,
-	handleSettingsChange,
-} from "src/settings/settings";
+import { overWriteLogLevel, updateLogLevel } from "src/common/log";
 import defaultSettings from "src/settings/defaultSettings";
+import {
+	exportSettings,
+	getAllSettings,
+	handleSettingsChange,
+	importSettings,
+	initSettings,
+	resetAllSettings,
+} from "src/settings/settings";
+import browser from "webextension-polyfill";
 import CategoryContainer from "./CategoryContainer";
 
 export default class SettingsPage extends Component {

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
 import browserInfo from "browser-info";
+import React, { Component } from "react";
 import browser from "webextension-polyfill";
 import ClearIcon from "../icons/clear.svg";
 import RestetIcon from "../icons/reset.svg";

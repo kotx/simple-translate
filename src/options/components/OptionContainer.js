@@ -1,6 +1,6 @@
 import React from "react";
-import browser from "webextension-polyfill";
 import { setSettings } from "src/settings/settings";
+import browser from "webextension-polyfill";
 import KeyboardShortcutForm from "./KeyboardShortcutForm";
 import "../styles/OptionContainer.scss";
 

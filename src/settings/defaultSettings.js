@@ -1,15 +1,15 @@
 import React from "react";
-import browser from "webextension-polyfill";
 import generateLangOptions from "src/common/generateLangOptions";
-import { getSettings, setSettings } from "./settings";
+import browser from "webextension-polyfill";
 import {
-	RESULT_FONT_COLOR_LIGHT,
-	RESULT_FONT_COLOR_DARK,
-	CANDIDATE_FONT_COLOR_LIGHT,
-	CANDIDATE_FONT_COLOR_DARK,
-	BG_COLOR_LIGHT,
 	BG_COLOR_DARK,
+	BG_COLOR_LIGHT,
+	CANDIDATE_FONT_COLOR_DARK,
+	CANDIDATE_FONT_COLOR_LIGHT,
+	RESULT_FONT_COLOR_DARK,
+	RESULT_FONT_COLOR_LIGHT,
 } from "./defaultColors";
+import { getSettings, setSettings } from "./settings";
 
 const getDefaultLangs = () => {
 	const uiLang = browser.i18n.getUILanguage();

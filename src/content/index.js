@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
-import browser from "webextension-polyfill";
+import { overWriteLogLevel, updateLogLevel } from "src/common/log";
 import {
-	initSettings,
 	getSettings,
 	handleSettingsChange,
+	initSettings,
 } from "src/settings/settings";
-import { updateLogLevel, overWriteLogLevel } from "src/common/log";
+import browser from "webextension-polyfill";
 import TranslateContainer from "./components/TranslateContainer";
 
 const init = async () => {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import browser from "webextension-polyfill";
 import openUrl from "src/common/openUrl";
+import browser from "webextension-polyfill";
 import "../styles/Footer.scss";
 import { getSettings } from "../../settings/settings";
 

@@ -1,7 +1,7 @@
-import browser from "webextension-polyfill";
 import browserInfo from "browser-info";
 import log from "loglevel";
 import { getSettings } from "src/settings/settings";
+import browser from "webextension-polyfill";
 
 const logDir = "background/menus";
 

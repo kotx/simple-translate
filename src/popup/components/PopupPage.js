@@ -1,13 +1,13 @@
-import React, { Component, StrictMode } from "react";
-import browser from "webextension-polyfill";
 import log from "loglevel";
-import { initSettings, getSettings, setSettings } from "src/settings/settings";
-import { updateLogLevel, overWriteLogLevel } from "src/common/log";
+import React, { Component, StrictMode } from "react";
 import generateLangOptions from "src/common/generateLangOptions";
+import { overWriteLogLevel, updateLogLevel } from "src/common/log";
+import { getSettings, initSettings, setSettings } from "src/settings/settings";
+import browser from "webextension-polyfill";
+import Footer from "./Footer";
 import Header from "./Header";
 import InputArea from "./InputArea";
 import ResultArea from "./ResultArea";
-import Footer from "./Footer";
 import "../styles/PopupPage.scss";
 import { getBackgroundColor } from "../../settings/defaultColors";
 

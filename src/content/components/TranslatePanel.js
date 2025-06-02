@@ -11,10 +11,12 @@ import {
 
 const splitLine = (text) => {
 	const regex = /(\n)/g;
-	return text
-		.split(regex)
-		// biome-ignore lint/suspicious/noArrayIndexKey: No ordering required
-		.map((line, i) => (line.match(regex) ? <br key={i} /> : line));
+	return (
+		text
+			.split(regex)
+			// biome-ignore lint/suspicious/noArrayIndexKey: No ordering required
+			.map((line, i) => (line.match(regex) ? <br key={i} /> : line))
+	);
 };
 
 export default class TranslatePanel extends Component {

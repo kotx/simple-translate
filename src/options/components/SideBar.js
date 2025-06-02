@@ -1,7 +1,7 @@
-import React from "react";
-import browser from "webextension-polyfill";
-import { Link, useLocation } from "react-router";
 import browserInfo from "browser-info";
+import React from "react";
+import { Link, useLocation } from "react-router";
+import browser from "webextension-polyfill";
 import "../styles/SideBar.scss";
 
 const isValidShortcuts =

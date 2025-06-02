@@ -1,6 +1,6 @@
 import React from "react";
-import browser from "webextension-polyfill";
 import { getSettings } from "src/settings/settings";
+import browser from "webextension-polyfill";
 import "../styles/TranslateButton.scss";
 
 const calcPosition = () => {

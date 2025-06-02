@@ -1,10 +1,10 @@
 import React from "react";
-import browser from "webextension-polyfill";
+import Toggle from "react-toggle";
 import openUrl from "src/common/openUrl";
 import { patreonLink } from "src/common/personalUrls";
+import browser from "webextension-polyfill";
 import HeartIcon from "../icons/heart.svg";
 import SettingsIcon from "../icons/settings.svg";
-import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import "../styles/Header.scss";
 

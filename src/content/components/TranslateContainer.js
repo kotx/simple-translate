@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import browser from "webextension-polyfill";
 import { getSettings } from "src/settings/settings";
+import browser from "webextension-polyfill";
 import TranslateButton from "./TranslateButton";
 import TranslatePanel from "./TranslatePanel";
 import "../styles/TranslateContainer.scss";

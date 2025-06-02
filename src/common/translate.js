@@ -1,6 +1,6 @@
-import browser from "webextension-polyfill";
 import log from "loglevel";
 import { getSettings } from "src/settings/settings";
+import browser from "webextension-polyfill";
 
 const logDir = "common/translate";
 
