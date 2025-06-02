@@ -15,6 +15,6 @@ module.exports = {
 		"@babel/plugin-transform-optional-chaining",
 		"@babel/plugin-syntax-optional-chaining",
 		"@babel/plugin-transform-object-rest-spread",
-		"transform-class-properties",
+		"@babel/plugin-transform-class-properties",
 	],
 };
