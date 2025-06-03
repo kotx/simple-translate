@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json.schemastore.org/babelrc",
+	"$schema": "http://json.schemastore.org/babelrc",
 	"presets": [
 		[
 			"@babel/preset-env",
@@ -16,6 +16,6 @@
 		"@babel/plugin-transform-optional-chaining",
 		"@babel/plugin-syntax-optional-chaining",
 		"@babel/plugin-transform-object-rest-spread",
-		"@babel/plugin-transform-class-properties",
+		"@babel/plugin-transform-class-properties"
 	]
 }

@@ -31,6 +31,7 @@
 		"mini-css-extract-plugin": "^2.2.2",
 		"opener": "^1.5.1",
 		"sass-loader": "^16.0.5",
+		"source-map-loader": "^5.0.0",
 		"webextension-polyfill": "^0.12.0",
 		"webpack": "^5.99.9",
 		"webpack-bundle-analyzer": "^4.9.1",
@@ -39,8 +40,8 @@
 		"zip-webpack-plugin": "^4.0.1"
 	},
 	"scripts": {
-		"watch-dev": "webpack --config webpack.config.dev.js --watch",
-		"build": "webpack --config webpack.config.dist.js",
+		"watch-dev": "webpack --mode development --watch",
+		"build": "webpack --mode production",
 		"open-analyzer": "opener http://127.0.0.1:8888/"
 	},
 	"repository": {
