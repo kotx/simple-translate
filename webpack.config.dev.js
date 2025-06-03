@@ -3,24 +3,19 @@
  * Released under the MIT license.
  * see https://opensource.org/licenses/MIT */
 
-const {
-	getHTMLPlugins,
-	getOutput,
-	getCopyPlugins,
-	getFirefoxCopyPlugins,
-	getEntry,
-	getMiniCssExtractPlugin,
-} = require("./webpack.utils");
-const path = require("node:path");
-const config = require("./config.json");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import { getHTMLPlugins, getOutput, getCopyPlugins, getFirefoxCopyPlugins, getEntry, getMiniCssExtractPlugin } from "./webpack.utils.js";
+import path from "node:path";
+import config from "./config.json" with { type: "json" };
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+
+const { chromePath, devDirectory, firefoxPath } = config;
 
 const generalConfig = {
 	mode: "development",
 	devtool: "source-map",
 	resolve: {
 		alias: {
-			src: path.resolve(__dirname, "src/"),
+			src: path.resolve(import.meta.dirname, "src/"),
 			"webextension-polyfill":
 				"webextension-polyfill/dist/browser-polyfill.min.js",
 		},
@@ -57,31 +52,30 @@ const generalConfig = {
 		],
 	},
 };
-const BundleAnalyzerPlugin =
-	require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-module.exports = [
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+export default [
 	{
 		...generalConfig,
-		entry: getEntry(config.chromePath),
-		output: getOutput("chrome", config.devDirectory),
+		entry: getEntry(chromePath),
+		output: getOutput("chrome", devDirectory),
 		plugins: [
 			...getMiniCssExtractPlugin(),
-			...getHTMLPlugins("chrome", config.devDirectory, config.chromePath),
-			...getCopyPlugins("chrome", config.devDirectory, config.chromePath),
+			...getHTMLPlugins("chrome", devDirectory, chromePath),
+			...getCopyPlugins("chrome", devDirectory, chromePath),
 		],
 	},
 	{
 		...generalConfig,
-		entry: getEntry(config.firefoxPath),
-		output: getOutput("firefox", config.devDirectory),
+		entry: getEntry(firefoxPath),
+		output: getOutput("firefox", devDirectory),
 		plugins: [
 			...getMiniCssExtractPlugin(),
 			...getFirefoxCopyPlugins(
 				"firefox",
-				config.devDirectory,
-				config.firefoxPath,
+				devDirectory,
+				firefoxPath,
 			),
-			...getHTMLPlugins("firefox", config.devDirectory, config.firefoxPath),
+			...getHTMLPlugins("firefox", devDirectory, firefoxPath),
 			new BundleAnalyzerPlugin({
 				openAnalyzer: false,
 				analyzerHost: "127.0.0.1",

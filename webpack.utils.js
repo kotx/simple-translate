@@ -3,17 +3,17 @@
  * Released under the MIT license.
  * see https://opensource.org/licenses/MIT */
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const ZipPlugin = require("zip-webpack-plugin");
-const path = require("node:path");
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ZipPlugin from "zip-webpack-plugin";
+import { resolve } from "node:path";
 
-const getHTMLPlugins = (browserDir, outputDir = "dev", sourceDir = "src") => [
+export const getHTMLPlugins = (browserDir, outputDir = "dev", sourceDir = "src") => [
 	new HtmlWebpackPlugin({
 		title: "Popup",
-		filename: path.resolve(
-			__dirname,
+		filename: resolve(
+			import.meta.dirname,
 			`${outputDir}/${browserDir}/popup/index.html`,
 		),
 		template: `${sourceDir}/popup/index.html`,
@@ -21,8 +21,8 @@ const getHTMLPlugins = (browserDir, outputDir = "dev", sourceDir = "src") => [
 	}),
 	new HtmlWebpackPlugin({
 		title: "Options",
-		filename: path.resolve(
-			__dirname,
+		filename: resolve(
+			import.meta.dirname,
 			`${outputDir}/${browserDir}/options/index.html`,
 		),
 		template: `${sourceDir}/options/index.html`,
@@ -30,45 +30,45 @@ const getHTMLPlugins = (browserDir, outputDir = "dev", sourceDir = "src") => [
 	}),
 ];
 
-const getOutput = (browserDir, outputDir = "dev") => {
+export const getOutput = (browserDir, outputDir = "dev") => {
 	return {
-		path: path.resolve(__dirname, `${outputDir}/${browserDir}`),
+		path: resolve(import.meta.dirname, `${outputDir}/${browserDir}`),
 		filename: "[name]/[name].js",
 	};
 };
 
-const getEntry = (sourceDir = "src") => {
+export const getEntry = (sourceDir = "src") => {
 	return {
-		popup: path.resolve(__dirname, `${sourceDir}/popup/index.js`),
-		options: path.resolve(__dirname, `${sourceDir}/options/index.js`),
-		content: path.resolve(__dirname, `${sourceDir}/content/index.js`),
-		background: path.resolve(
-			__dirname,
+		popup: resolve(import.meta.dirname, `${sourceDir}/popup/index.js`),
+		options: resolve(import.meta.dirname, `${sourceDir}/options/index.js`),
+		content: resolve(import.meta.dirname, `${sourceDir}/content/index.js`),
+		background: resolve(
+			import.meta.dirname,
 			`${sourceDir}/background/background.js`,
 		),
 	};
 };
 
-const getCopyPlugins = (browserDir, outputDir = "dev", sourceDir = "src") => [
+export const getCopyPlugins = (browserDir, outputDir = "dev", sourceDir = "src") => [
 	new CopyWebpackPlugin({
 		patterns: [
 			{
 				from: `${sourceDir}/icons`,
-				to: path.resolve(__dirname, `${outputDir}/${browserDir}/icons`),
+				to: resolve(import.meta.dirname, `${outputDir}/${browserDir}/icons`),
 			},
 			{
 				from: `${sourceDir}/_locales`,
-				to: path.resolve(__dirname, `${outputDir}/${browserDir}/_locales`),
+				to: resolve(import.meta.dirname, `${outputDir}/${browserDir}/_locales`),
 			},
 			{
 				from: `${sourceDir}/manifest-chrome.json`,
-				to: path.resolve(__dirname, `${outputDir}/${browserDir}/manifest.json`),
+				to: resolve(import.meta.dirname, `${outputDir}/${browserDir}/manifest.json`),
 			},
 		],
 	}),
 ];
 
-const getFirefoxCopyPlugins = (
+export const getFirefoxCopyPlugins = (
 	browserDir,
 	outputDir = "dev",
 	sourceDir = "src",
@@ -77,29 +77,29 @@ const getFirefoxCopyPlugins = (
 		patterns: [
 			{
 				from: `${sourceDir}/icons`,
-				to: path.resolve(__dirname, `${outputDir}/${browserDir}/icons`),
+				to: resolve(import.meta.dirname, `${outputDir}/${browserDir}/icons`),
 			},
 			{
 				from: `${sourceDir}/_locales`,
-				to: path.resolve(__dirname, `${outputDir}/${browserDir}/_locales`),
+				to: resolve(import.meta.dirname, `${outputDir}/${browserDir}/_locales`),
 			},
 			{
 				from: `${sourceDir}/manifest-firefox.json`,
-				to: path.resolve(__dirname, `${outputDir}/${browserDir}/manifest.json`),
+				to: resolve(import.meta.dirname, `${outputDir}/${browserDir}/manifest.json`),
 			},
 		],
 	}),
 ];
 
-const getMiniCssExtractPlugin = () => [
+export const getMiniCssExtractPlugin = () => [
 	new MiniCssExtractPlugin({
 		filename: "[name]/[name].css",
 	}),
 ];
 
-const getZipPlugin = (browserDir, outputDir = "dist", exclude = "") =>
+export const getZipPlugin = (browserDir, outputDir = "dist", exclude = "") =>
 	new ZipPlugin({
-		path: path.resolve(__dirname, `${outputDir}`),
+		path: resolve(import.meta.dirname, `${outputDir}`),
 		filename: browserDir,
 		extension: "zip",
 		fileOptions: {
@@ -113,13 +113,3 @@ const getZipPlugin = (browserDir, outputDir = "dist", exclude = "") =>
 		},
 		exclude: exclude,
 	});
-
-module.exports = {
-	getHTMLPlugins,
-	getOutput,
-	getCopyPlugins,
-	getFirefoxCopyPlugins,
-	getMiniCssExtractPlugin,
-	getZipPlugin,
-	getEntry,
-};
